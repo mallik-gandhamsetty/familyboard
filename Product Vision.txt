@@ -1,0 +1,186 @@
+🧭 Product Requirements Document (PRD)
+
+Product Name: FamilyBoard
+Platform: Web App (PWA-first, iPad & desktop optimized)
+Owner: Mallikarjuna G
+Version: 2.0
+Last Updated: 7 Nov 2025
+
+1. 🎯 Vision & Mission
+
+Vision: Create an intelligent, family-first digital hub that makes coordination effortless — blending planning, communication, and household routines with conversational AI and voice.
+
+Mission:
+
+“Turn everyday family chaos into calm — through AI that listens, learns, and organizes.”
+
+2. 🧍‍♂️ Target Users
+Persona	Description	Key Needs
+Parents	Busy parents managing work and kids’ schedules	Shared visibility, reminders, intelligent coordination
+Kids (6–15)	School-age children	Gamified chores, friendly assistant interaction
+Caregivers / Grandparents	Supportive family members	Read-only or voice-driven view of events
+Home Managers	Stay-at-home or home-office parents	All-in-one control over calendar, lists, and meals
+3. 🧩 Core Features (MVP + AI)
+🗓️ Calendar & Scheduling
+
+Unified multi-user calendar (Google, Apple, Outlook).
+
+Day, week, and month views.
+
+Colour-coded users.
+
+Smart event creation (“Plan dinner with Raj Friday 7 PM”).
+
+Conflict detection and smart suggestions (“You have overlap at 4 PM”).
+
+✅ Tasks & Chores
+
+Shared task lists with owners, due dates, priorities.
+
+AI-assigned recurring tasks based on patterns.
+
+Gamified progress bars for kids (e.g., stars or streaks).
+
+Voice-based updates (“Mark homework as done”).
+
+🛒 Lists & Meal Planner
+
+Grocery lists and shared to-do boards.
+
+AI-assisted recipe and meal suggestions.
+
+Natural language inputs (“Add taco ingredients to grocery list”).
+
+🏠 Dashboard View
+
+Customizable grid layout with widgets:
+
+Today’s Schedule
+
+Weather
+
+Tasks
+
+Meal Plan
+
+Notes / Family Quote / Photo
+
+Voice mode button and ambient AI widget.
+
+Always-on wall display with auto-refresh.
+
+🔔 Notifications
+
+Browser push + optional email reminders.
+
+“Family Summary” digest (daily or weekly).
+
+4. 🤖 AI Capabilities — “HomeBrain”
+4.1 Natural Language Understanding
+
+Users can type or speak commands like:
+
+“Add dentist appointment Thursday 3 PM.”
+“Summarize our weekend schedule.”
+“Did Mia finish her chores?”
+
+LLM orchestrator interprets, routes, and executes actions (calendar, task, meal planner).
+
+4.2 Predictive Intelligence
+Area	Example
+Event Prediction	“You usually shop Saturday mornings — schedule it?”
+Conflict Detection	“Soccer and dance class overlap — shift one?”
+Weather Adaptation	“Rain expected — move picnic to Sunday?”
+Routine Suggestions	“Repeat last week’s plan: meal prep + cleaning?”
+4.3 Personalized AI Memory
+
+Remembers family names, preferred meals, recurring events.
+
+Learns habits over time (“Dad prefers quick voice confirmations”).
+
+Suggests personalized summaries.
+
+4.4 Voice & Chat Assistant
+
+Always-available floating mic/chat button (“Talk to FamilyBoard”).
+
+Voice input → Whisper API or Azure Speech → Intent parsing → Response via GPT model.
+
+Speech output using OpenAI TTS or ElevenLabs.
+
+Family member recognition (voice profiles – optional).
+
+4.5 AI Summaries & Insights
+
+Daily Brief: “Today: 3 events, sunny weather, and chores pending for Mia.”
+
+Weekly Recap: AI-written summary of past week, highlights, and upcoming items.
+
+Mood Mode (opt-in): Suggests calm background, quotes, or music based on activity levels.
+
+5. 💡 UX Flow: “How It Feels”
+🎙️ Voice Mode
+
+Visual: Floating mic bubble (bottom-right corner).
+
+Tap or say “Hey FamilyBoard.”
+
+Speak naturally.
+
+Assistant responds with TTS + visible action confirmation (e.g., card slides into view: “Dentist added ✅”).
+
+💬 Chat Mode
+
+Visual: Sidebar chat window on the right.
+
+Threaded messages between user & AI.
+
+Context-aware (“Earlier you said... should I add that too?”).
+
+📅 Dashboard Mode
+
+Visual: Modular grid.
+
+Top: Greeting (“Good morning, Rao Family 🌞”)
+
+Center: Today’s calendar.
+
+Right: Tasks, meals, weather widgets.
+
+Bottom: “Ask HomeBrain anything…”
+
+🌙 Ambient Mode
+
+Idle display → subtle animations, photos, and next-day summary.
+
+Soft voice update at night (“Tomorrow’s plan is ready. 3 events, 2 chores, sunny day.”)
+
+6. 🧱 Technical Architecture
+Layer	Component	Tech Stack
+Frontend	Web PWA	React (Next.js 15), Tailwind, Framer Motion
+AI Engine	LLM + Orchestrator	OpenAI GPT-5 w/ Function Calling, LangChain
+Voice Layer	Speech I/O	Whisper API (STT), OpenAI TTS
+Backend	Data & Sync	Firebase (Auth, Firestore, FCM) / Supabase
+Realtime Layer	Collaboration	Firestore listeners / WebSockets
+Storage	Assets / Data	Firebase Storage / S3
+Integrations	APIs	Google Calendar, Outlook, Weather, Stripe
+Vector Memory	Context store	Supabase Vector / Pinecone
+Auth	Identity	Google, Apple, Email/Password
+Hosting	Web App	Vercel or Firebase Hosting
+7. 🔐 Privacy & Responsible AI
+
+All voice data processed transiently (no retention unless user enables memory).
+
+Family data encrypted in transit & at rest.
+
+Transparent AI actions: every AI change appears as a system event (“AI added event ‘Dentist’”).
+
+Child-friendly mode: restricts responses, disables external content retrieval.
+
+Full GDPR & CCPA compliance.
+
+8. 💰 Monetization Model
+Tier	Features	Price
+Free	3 members, calendar + tasks + AI text chat	$0
+Plus	Unlimited members, voice mode, meal planner, routines	$5 / month
+Pro	Full AI (predictive, summaries, memory), themes, integrations	$10 / month
